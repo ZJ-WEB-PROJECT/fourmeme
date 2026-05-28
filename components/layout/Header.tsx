@@ -11,7 +11,7 @@ import { ConnectButton } from '@/components/wallet/ConnectButton';
 import { useI18n } from '@/providers/I18nProvider';
 
 // Internal routes to prefetch so they are pre-compiled before the user clicks
-const PREFETCH_ROUTES = ['/', '/swap', '/collection'];
+const PREFETCH_ROUTES = ['/', '/collection'];
 
 // ── Pixel unicorn logo ─────────────────────────────────────────────
 function Logo() {
@@ -82,7 +82,6 @@ export function Header() {
 
   const navLinks = [
     { href: '/',           label: t('nav.explore') },
-    { href: '/swap',       label: t('nav.swap') },
     { href: '/collection', label: t('nav.collection') },
     { href: 'https://four.meme', label: t('nav.market'), external: true },
   ];

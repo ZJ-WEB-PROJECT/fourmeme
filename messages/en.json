@@ -1,7 +1,6 @@
 {
   "nav": {
     "explore": "Explore",
-    "swap": "Swap",
     "collection": "Collection",
     "market": "Market"
   },
@@ -13,44 +12,32 @@
     "tag": "Explore",
     "title": "Gallery",
     "searchLabel": "Search",
-    "searchHint": "Wallet address (0x…) or uPEG ID",
-    "searchPlaceholder": "e.g. 0x1234… or 32694",
+    "searchHint": "Wallet address (0x…) or token name",
+    "searchPlaceholder": "e.g. 0x1234… or Robin",
     "searchBtn": "Search",
     "clearSearch": "Clear search",
     "newest": "Newest",
     "oldest": "Oldest",
     "filtersLabel": "Filters",
-    "upegs": "uPEGs",
+    "upegs": "NFTs",
     "holders": "Holders",
     "showing": "Showing {from}–{to} of {total}",
     "prevPage": "← Prev",
     "nextPage": "Next →",
     "page": "Page {n}"
   },
-  "swap": {
-    "tag": "Swap",
-    "title": "Buy uPEG on PancakeSwap",
-    "desc": "Token and network are already set.\nOpen PancakeSwap, confirm the amount,\nand your uPEG arrives in your wallet.",
-    "network": "Network",
-    "networkValue": "BNB Smart Chain",
-    "token": "Token",
-    "pair": "Pair",
-    "pairValue": "BNB → uPEG",
-    "openBtn": "Open PancakeSwap",
-    "footnote": "Your collection updates automatically\nonce the swap is confirmed."
-  },
   "collection": {
     "tag": "Collection",
-    "title": "My uPEGs",
-    "tabUpegs": "uPEGs",
-    "tabNfts": "NFTs",
+    "title": "My Collection",
+    "tabUpegs": "Tokens",
+    "tabNfts": "Art",
     "getStartedTag": "Get started",
     "getStartedTitle": "Connect a wallet",
-    "getStartedDesc": "Connect your wallet to view your collection.",
-    "emptyTitle": "No uPEGs yet",
-    "emptyDesc": "Buy uPEG on PancakeSwap to get started.",
-    "goSwap": "Go to Swap →",
-    "count": "{n} uPEGs in your wallet"
+    "getStartedDesc": "Connect your wallet to view your NFTs.",
+    "emptyTitle": "Nothing here yet",
+    "emptyDesc": "Buy a UniToken on Four.meme to get started.",
+    "goSwap": "Go to Four.meme →",
+    "count": "{n} tokens in your wallet"
   },
   "detail": {
     "back": "Back",
@@ -58,7 +45,7 @@
     "contract": "Contract",
     "history": "History",
     "transfer": "Transfer",
-    "transferTitle": "Send uPEG #{id}",
+    "transferTitle": "Transfer #{id}",
     "recipientLabel": "Recipient Address",
     "confirmBtn": "Confirm Transfer",
     "invalidAddress": "Invalid address",
@@ -80,11 +67,11 @@
     "from": "from"
   },
   "footer": {
-    "desc": "Four.meme Gallery — Fully on-chain NFTs on BSC"
+    "desc": "Four.meme Gallery — On-chain NFTs on BSC"
   },
   "common": {
     "loading": "Loading...",
-    "notFound": "NFT #{id} not found.",
+    "notFound": "#{id} not found.",
     "backToGallery": "← Back to Gallery"
   }
 }

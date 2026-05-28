@@ -20,8 +20,6 @@ node_modules/
 
 # env (sensitive)
 .env*.local
-/fourmeme-nft-gallery/.env.local
-/fourmeme-nft-gallery/.env*.local
 
 # package / binary
 *.zip

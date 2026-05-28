@@ -1,55 +1,75 @@
 export interface NFTMetadata {
   name: string;
   description: string;
-  image: string; // data:image/svg+xml;base64,...
+  image: string;
   attributes: Array<{
     trait_type: string;
     value: string | number;
   }>;
 }
 
+export interface NFTLinks {
+  website?: string;
+  twitter?: string;
+  telegram?: string;
+}
+
 export interface NFT {
-  contract: string;
-  tokenId: string;
-  owner: string;
-  tokenURI: string; // data:application/json;base64,...
-  metadata: NFTMetadata;
-  bgColor?: string;
-  tags?: string[]; // e.g. ['TWIN']
-  listed?: boolean;
-  listPrice?: string;
-  lastSalePrice?: string;
-  lastSaleTime?: number;
+  // ─── 基础字段（mock 和真实数据均有）───────────────────────────────────────
+  contract:  string;
+  tokenId:   string;   // 真实数据中等于 token 合约地址
+  owner:     string;
+  tokenURI:  string;
+  metadata:  NFTMetadata;
+  bgColor?:  string;
+  tags?:     string[];
+  // ─── 真实数据扩展字段 ───────────────────────────────────────────────────────
+  address?:      string;
+  name?:         string;
+  symbol?:       string;
+  creator?:      string;
+  maxSupply?:    string;
+  initialPrice?: string;
+  quoteAsset?:   string;
+  vault?:        string;
+  tokenMetaUri?: string;
+  image?:        string;
+  description?:  string;
+  links?:        NFTLinks;
+  blockNumber?:  number;
+  txHash?:       string;
+  createdAt?:    number;
+  artTotalCount?: number;
 }
 
 export interface Activity {
-  type: 'mint' | 'transfer' | 'sale';
-  from: string;
-  to: string;
-  tokenId: string;
-  price?: string;
-  txHash: string;
+  type:        'mint' | 'transfer' | 'sale';
+  from:        string;
+  to:          string;
+  tokenId:     string;
+  price?:      string;
+  txHash:      string;
   blockNumber: number;
-  timestamp: number;
+  timestamp:   number;
 }
 
 export interface Stats {
   totalSupply: number;
-  holders: number;
-  volume24h: string;
+  holders:     number;
+  volume24h:   string;
   volumeTotal: string;
 }
 
 export interface PaginatedResponse<T> {
-  list: T[];
-  total: number;
-  page: number;
+  list:     T[];
+  total:    number;
+  page:     number;
   pageSize: number;
-  hasMore: boolean;
+  hasMore:  boolean;
 }
 
 export interface ApiResponse<T> {
-  code: number;
+  code:    number;
   message: string;
-  data: T;
+  data:    T;
 }

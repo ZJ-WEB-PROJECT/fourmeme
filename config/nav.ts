@@ -7,7 +7,6 @@ export interface NavItem {
 
 export const navItems: NavItem[] = [
   { label: 'Explore', href: '/' },
-  { label: 'Swap', href: '/swap' },
   { label: 'Collection', href: '/collection' },
   { label: 'Market', href: 'https://four.meme', external: true },
 ];

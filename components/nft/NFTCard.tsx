@@ -13,19 +13,39 @@ interface NFTCardProps {
   index?: number;
 }
 
+// 地址类型的 tokenId（0x...）转为稳定数字，用于背景色/SVG 生成
+function tokenIdToNumber(tokenId: string): number {
+  if (!tokenId) return 0;
+  // 合约地址：取后 6 位 hex 转 int
+  if (tokenId.startsWith('0x') || tokenId.startsWith('0X')) {
+    return parseInt(tokenId.slice(-6), 16) || 0;
+  }
+  return Number(tokenId) || 0;
+}
+
+// 显示名称：优先 name，其次 symbol，最后缩短地址
+function displayName(nft: NFT): string {
+  if (nft.name) return nft.name;
+  if (nft.metadata?.name) return nft.metadata.name;
+  const id = nft.tokenId;
+  if (id?.startsWith('0x') && id.length > 10) return `${id.slice(0, 6)}…${id.slice(-4)}`;
+  return `#${id}`;
+}
+
 export function NFTCard({ nft, index = 0 }: NFTCardProps) {
   const router = useRouter();
   const { resolvedTheme } = useTheme();
   const theme = resolvedTheme === 'light' ? 'light' : 'dark';
-  const tokenId = Number(nft.tokenId);
+  const tokenNum = tokenIdToNumber(nft.tokenId);
 
-  // Generate SVG only when this card is actually rendered (virtual list ensures ~30 at a time)
   const svgSrc = useMemo(
-    () => nft.metadata?.image ?? svgToDataURI(generatePixelSVG(tokenId)),
-    [tokenId, nft.metadata?.image]
+    () => nft.metadata?.image || svgToDataURI(generatePixelSVG(tokenNum)),
+    [tokenNum, nft.metadata?.image]
   );
 
-  const bgColor = getNFTBgColor(tokenId, theme);
+  const bgColor = getNFTBgColor(tokenNum, theme);
+  const label   = displayName(nft);
+  const symbol  = nft.symbol || nft.tags?.[0] || 'uPEG';
 
   const handleClick = () => router.push(`/gallery?id=${nft.tokenId}`);
 
@@ -37,14 +57,24 @@ export function NFTCard({ nft, index = 0 }: NFTCardProps) {
       role="button"
       tabIndex={0}
       onKeyDown={(e) => e.key === 'Enter' && handleClick()}
-      aria-label={`uPEG #${nft.tokenId}`}
+      aria-label={label}
     >
       <div className="nft-card-image">
-        <OnchainSVG src={svgSrc} alt={`uPEG #${nft.tokenId}`} style={{ width: '100%', height: '100%' }} />
+        <OnchainSVG src={svgSrc} alt={label} style={{ width: '100%', height: '100%' }} />
       </div>
       <div className="nft-card-label">
-        upeg
-        <span className="id">#{nft.tokenId}</span>
+        <span
+          style={{
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            maxWidth: '100%',
+            display: 'block',
+          }}
+        >
+          {label}
+        </span>
+        <span className="id">{symbol}</span>
         {nft.tags?.includes('TWIN') && <span className="nft-card-tag">TWIN</span>}
       </div>
     </div>
