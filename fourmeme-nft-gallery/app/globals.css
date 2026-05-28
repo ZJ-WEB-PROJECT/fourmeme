@@ -1,0 +1,345 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==============================
+   THEME: DARK (default)
+   ============================== */
+:root,
+[data-theme="dark"] {
+  --bg-base: #000000;
+  --bg-card: #1A1B23;
+  --bg-surface: #161616;
+  --bg-input: #0E0E10;
+  --bg-hover: #1A1A1C;
+
+  --text-primary: #EEEAE0;
+  --text-secondary: #9B9B9B;
+  --text-tertiary: #6B6B6B;
+  --text-muted: #4A4A4A;
+
+  --brand-tag: #C77DFF;
+  --brand-tag-dim: #9D5BD2;
+
+  --btn-primary-bg: #F5F2EB;
+  --btn-primary-text: #000000;
+  --btn-primary-hover: #FFFFFF;
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-input: rgba(255, 255, 255, 0.1);
+  --border-active: rgba(255, 255, 255, 0.3);
+
+  --underline-active: #EEEAE0;
+
+  /* shadcn compat */
+  --background: #000000;
+  --foreground: #EEEAE0;
+  --border: rgba(255, 255, 255, 0.06);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: rgba(255, 255, 255, 0.3);
+  --radius: 0.5rem;
+}
+
+/* ==============================
+   THEME: LIGHT
+   ============================== */
+[data-theme="light"] {
+  --bg-base: #F5F2EB;
+  --bg-card: #E8E4D9;
+  --bg-surface: #FFFFFF;
+  --bg-input: #FFFFFF;
+  --bg-hover: #EAE6DB;
+
+  --text-primary: #0E0E10;
+  --text-secondary: #5A5A5A;
+  --text-tertiary: #8A8A8A;
+  --text-muted: #B8B8B8;
+
+  --brand-tag: #9D5BD2;
+  --brand-tag-dim: #7A3FB0;
+
+  --btn-primary-bg: #000000;
+  --btn-primary-text: #F5F2EB;
+  --btn-primary-hover: #1A1A1A;
+
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-input: rgba(0, 0, 0, 0.12);
+  --border-active: rgba(0, 0, 0, 0.4);
+
+  --underline-active: #0E0E10;
+
+  /* shadcn compat */
+  --background: #F5F2EB;
+  --foreground: #0E0E10;
+  --border: rgba(0, 0, 0, 0.08);
+  --input: rgba(0, 0, 0, 0.12);
+  --ring: rgba(0, 0, 0, 0.4);
+  --radius: 0.5rem;
+}
+
+/* ==============================
+   GLOBAL RESET & BASE
+   ============================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-input); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-active); }
+
+/* ==============================
+   TYPOGRAPHY UTILITIES
+   ============================== */
+.brand-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-tag);
+}
+
+.display-huge {
+  font-family: var(--font-sans);
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--text-primary);
+}
+@media (max-width: 768px) {
+  .display-huge { font-size: 40px; }
+}
+
+/* ==============================
+   BUTTONS
+   ============================== */
+.btn-primary {
+  height: 36px;
+  padding: 0 16px;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border-radius: 8px;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.btn-primary:hover { background: var(--btn-primary-hover); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-secondary {
+  height: 44px;
+  padding: 0 16px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn-secondary:hover { background: var(--bg-hover); border-color: var(--border-active); }
+
+/* ==============================
+   INPUT
+   ============================== */
+.input-text {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.input-text::placeholder { color: var(--text-muted); }
+.input-text:focus { border-color: var(--border-active); }
+
+/* ==============================
+   TOGGLE BUTTON
+   ============================== */
+.toggle-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.toggle-btn[data-active='true'] {
+  color: var(--text-primary);
+  border-color: var(--border-active);
+  background: var(--bg-surface);
+}
+.toggle-btn:hover { color: var(--text-primary); }
+
+/* ==============================
+   THEME TOGGLE BUTTON
+   ============================== */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover { background: var(--bg-hover); }
+
+/* ==============================
+   NFT CARD
+   ============================== */
+.nft-card {
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+.nft-card:hover { transform: translateY(-2px); }
+
+.nft-card-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  min-height: 0;
+}
+.nft-card-image img,
+.nft-card-image svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.nft-card-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+.nft-card-label .id { color: var(--text-primary); margin-left: 4px; }
+
+.nft-card-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==============================
+   GALLERY GRID
+   ============================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+@media (max-width: 1024px) {
+  .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 640px) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+}
+
+/* ==============================
+   ANIMATION
+   ============================== */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out backwards;
+}
+
+/* ==============================
+   FLOATING BG NFTs
+   ============================== */
+.bg-floating-nfts {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.floating-nft {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  opacity: 0.08;
+  filter: blur(8px);
+  image-rendering: pixelated;
+}
+
+/* NFT Detail layout */
+.nft-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .nft-detail-grid { grid-template-columns: 1fr; gap: 24px; }
+}
