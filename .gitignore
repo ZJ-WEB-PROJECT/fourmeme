@@ -1,7 +1,5 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
-/node_modules
+node_modules/
 /.pnp
 .pnp.js
 .yarn/install-state.gz
@@ -9,24 +7,40 @@
 # testing
 /coverage
 
-# next.js
+# next.js build output
 /.next/
 /out/
+/.turbo/
 
 # production
 /build
 
-# misc
-.DS_Store
+# indexer data
+/fourmeme-indexer/data/
+
+# env (sensitive)
+.env*.local
+/fourmeme-nft-gallery/.env.local
+/fourmeme-nft-gallery/.env*.local
+
+# package / binary
+*.zip
 *.pem
 
-# debug
+# logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
+# system
+.DS_Store
+Thumbs.db
+
+# editor
+.idea/
+.vscode/
+*.swp
 
 # vercel
 .vercel
