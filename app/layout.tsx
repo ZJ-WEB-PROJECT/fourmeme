@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
 import dynamic from 'next/dynamic';
 import './globals.css';
 import { ThemeProvider } from '@/providers/ThemeProvider';
@@ -21,20 +20,6 @@ const FloatingBgNFTs = dynamic(
   { ssr: false }
 );
 
-const sans = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-sans',
-  display: 'swap',
-});
-
-const mono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-mono',
-  display: 'swap',
-});
-
 export const metadata: Metadata = {
   title: 'Four.meme Gallery — Fully On-chain NFTs',
   description: 'Explore, collect, and trade fully on-chain pixel art NFTs on BSC.',
@@ -48,7 +33,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${sans.variable} ${mono.variable}`}>
+      <body>
         <ThemeProvider>
           <I18nProvider>
             <QueryProvider>

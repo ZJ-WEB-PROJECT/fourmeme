@@ -1,0 +1,40 @@
+name: Deploy front
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --force
+
+      - name: Build project
+        run: npm run build
+
+      # 验证构建输出
+      - name: Verify build
+        run: ls -l dist
+
+      - name: Deploy to server
+        uses: appleboy/scp-action@master
+        with:
+          host: 149.88.68.102
+          username: root
+          port: 22
+          key: ${{ secrets.FOURMEME_KEY }}
+          source: ./dist/*
+          target: /www/wwwroot/fourmeme.icu/dist
+          strip_components: 1
