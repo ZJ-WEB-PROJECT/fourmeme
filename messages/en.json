@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "explore": "Explore",
+    "swap": "Swap",
+    "collection": "Collection",
+    "market": "Market"
+  },
+  "header": {
+    "connect": "Connect wallet",
+    "wrongNetwork": "Wrong network"
+  },
+  "gallery": {
+    "tag": "Explore",
+    "title": "Gallery",
+    "searchLabel": "Search",
+    "searchHint": "Wallet address (0x…) or uPEG ID",
+    "searchPlaceholder": "e.g. 0x1234… or 32694",
+    "searchBtn": "Search",
+    "clearSearch": "Clear search",
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "filtersLabel": "Filters",
+    "upegs": "uPEGs",
+    "holders": "Holders",
+    "showing": "Showing {from}–{to} of {total}",
+    "prevPage": "← Prev",
+    "nextPage": "Next →",
+    "page": "Page {n}"
+  },
+  "swap": {
+    "tag": "Swap",
+    "title": "Buy uPEG on PancakeSwap",
+    "desc": "Token and network are already set.\nOpen PancakeSwap, confirm the amount,\nand your uPEG arrives in your wallet.",
+    "network": "Network",
+    "networkValue": "BNB Smart Chain",
+    "token": "Token",
+    "pair": "Pair",
+    "pairValue": "BNB → uPEG",
+    "openBtn": "Open PancakeSwap",
+    "footnote": "Your collection updates automatically\nonce the swap is confirmed."
+  },
+  "collection": {
+    "tag": "Collection",
+    "title": "My uPEGs",
+    "tabUpegs": "uPEGs",
+    "tabNfts": "NFTs",
+    "getStartedTag": "Get started",
+    "getStartedTitle": "Connect a wallet",
+    "getStartedDesc": "Connect your wallet to view your collection.",
+    "emptyTitle": "No uPEGs yet",
+    "emptyDesc": "Buy uPEG on PancakeSwap to get started.",
+    "goSwap": "Go to Swap →",
+    "count": "{n} uPEGs in your wallet"
+  },
+  "detail": {
+    "back": "Back",
+    "owner": "Owner",
+    "contract": "Contract",
+    "history": "History",
+    "transfer": "Transfer",
+    "transferTitle": "Send uPEG #{id}",
+    "recipientLabel": "Recipient Address",
+    "confirmBtn": "Confirm Transfer",
+    "invalidAddress": "Invalid address",
+    "done": "Done",
+    "transferSuccess": "Transfer Successful",
+    "txStatus": {
+      "signing": "Waiting for signature…",
+      "pending": "Transaction submitted…",
+      "mining": "Mining…",
+      "success": "Transfer complete!",
+      "error": "Transaction failed"
+    }
+  },
+  "activity": {
+    "mint": "Mint",
+    "transfer": "Transfer",
+    "sale": "Sale",
+    "by": "by",
+    "from": "from"
+  },
+  "footer": {
+    "desc": "Four.meme Gallery — Fully on-chain NFTs on BSC"
+  },
+  "common": {
+    "loading": "Loading...",
+    "notFound": "NFT #{id} not found.",
+    "backToGallery": "← Back to Gallery"
+  }
+}

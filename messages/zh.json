@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "explore": "探索",
+    "swap": "兑换",
+    "collection": "我的",
+    "market": "市场"
+  },
+  "header": {
+    "connect": "连接钱包",
+    "wrongNetwork": "错误网络"
+  },
+  "gallery": {
+    "tag": "探索",
+    "title": "画廊",
+    "searchLabel": "搜索",
+    "searchHint": "钱包地址 (0x…) 或 uPEG 编号",
+    "searchPlaceholder": "例如 0x1234… 或 32694",
+    "searchBtn": "搜索",
+    "clearSearch": "清除搜索",
+    "newest": "最新",
+    "oldest": "最早",
+    "filtersLabel": "筛选",
+    "upegs": "个 NFT",
+    "holders": "持有人",
+    "showing": "显示第 {from}–{to} 个，共 {total}",
+    "prevPage": "← 上一页",
+    "nextPage": "下一页 →",
+    "page": "第 {n} 页"
+  },
+  "swap": {
+    "tag": "兑换",
+    "title": "在 PancakeSwap 购买 uPEG",
+    "desc": "网络和代币已预先设置。\n打开 PancakeSwap，确认数量，\nuPEG 将直接到账你的钱包。",
+    "network": "网络",
+    "networkValue": "BNB 智能链",
+    "token": "合约",
+    "pair": "交易对",
+    "pairValue": "BNB → uPEG",
+    "openBtn": "打开 PancakeSwap",
+    "footnote": "交易确认后，你的持仓\n会自动更新。"
+  },
+  "collection": {
+    "tag": "收藏",
+    "title": "我的 uPEG",
+    "tabUpegs": "uPEG",
+    "tabNfts": "NFT",
+    "getStartedTag": "开始使用",
+    "getStartedTitle": "连接钱包",
+    "getStartedDesc": "连接钱包以查看你的 NFT 收藏。",
+    "emptyTitle": "暂无 uPEG",
+    "emptyDesc": "在 PancakeSwap 购买 uPEG 即可开始。",
+    "goSwap": "前往兑换 →",
+    "count": "钱包中共 {n} 个 uPEG"
+  },
+  "detail": {
+    "back": "返回",
+    "owner": "持有人",
+    "contract": "合约",
+    "history": "历史记录",
+    "transfer": "转移",
+    "transferTitle": "转移 uPEG #{id}",
+    "recipientLabel": "接收地址",
+    "confirmBtn": "确认转移",
+    "invalidAddress": "地址格式错误",
+    "done": "完成",
+    "transferSuccess": "转移成功",
+    "txStatus": {
+      "signing": "等待签名…",
+      "pending": "交易已提交…",
+      "mining": "上链中…",
+      "success": "转移完成！",
+      "error": "交易失败"
+    }
+  },
+  "activity": {
+    "mint": "铸造",
+    "transfer": "转移",
+    "sale": "售出",
+    "by": "由",
+    "from": "从"
+  },
+  "footer": {
+    "desc": "Four.meme 画廊 — BSC 链上原生 NFT"
+  },
+  "common": {
+    "loading": "加载中…",
+    "notFound": "未找到 NFT #{id}",
+    "backToGallery": "← 返回画廊"
+  }
+}
