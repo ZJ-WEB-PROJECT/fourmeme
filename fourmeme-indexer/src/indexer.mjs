@@ -93,14 +93,32 @@ async function processLog(log) {
   console.log(`[indexer] ✅ UniToken: ${name} (${symbol}) @ ${address}`)
 }
 
+// ─── 带重试的 getLogs ─────────────────────────────────────────────────────────
+async function getLogsWithRetry(fromBlock, toBlock, retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await client.getLogs({
+        address: coreAddress,
+        event:   TOKEN_CREATED_EVENT,
+        fromBlock,
+        toBlock,
+      })
+    } catch (err) {
+      const isRateLimit = err.code === -32005 || err.message?.includes('limit exceeded')
+      if (isRateLimit && i < retries - 1) {
+        const wait = (i + 1) * 3000
+        console.warn(`[indexer] RPC 限速，${wait / 1000}s 后重试 (${i + 1}/${retries})...`)
+        await new Promise(r => setTimeout(r, wait))
+      } else {
+        throw err
+      }
+    }
+  }
+}
+
 // ─── 扫描指定区块范围 ─────────────────────────────────────────────────────────
 async function scanRange(fromBlock, toBlock) {
-  const logs = await client.getLogs({
-    address: coreAddress,
-    event:   TOKEN_CREATED_EVENT,
-    fromBlock,
-    toBlock,
-  })
+  const logs = await getLogsWithRetry(fromBlock, toBlock)
   for (const log of logs) {
     await processLog(log)
   }
@@ -122,10 +140,15 @@ async function historicalSync() {
   let total = 0
   for (let from = fromBlock; from <= latestBlock; from += CHUNK_SIZE) {
     const to = from + CHUNK_SIZE - 1n < latestBlock ? from + CHUNK_SIZE - 1n : latestBlock
-    const count = await scanRange(from, to)
-    total += count
-    setState('last_block', to.toString())
-    if (count > 0) console.log(`[indexer] 区块 ${from}–${to}：发现 ${count} 条日志`)
+    try {
+      const count = await scanRange(from, to)
+      total += count
+      setState('last_block', to.toString())
+      if (count > 0) console.log(`[indexer] 区块 ${from}–${to}：发现 ${count} 条日志`)
+    } catch (err) {
+      console.error(`[indexer] 扫描 ${from}–${to} 失败，跳过：${err.message}`)
+      setState('last_block', to.toString())
+    }
   }
   console.log(`[indexer] 历史扫描完成，共处理 ${total} 条 UniToken 候选`)
   return latestBlock
