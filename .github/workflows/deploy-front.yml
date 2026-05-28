@@ -36,5 +36,5 @@ jobs:
           port: 22
           key: ${{ secrets.FOURMEME_KEY }}
           source: ./out/*
-          target: /www/wwwroot/fourmeme.icu
+          target: /www/wwwroot/fourmeme.icu/dist
           strip_components: 1
